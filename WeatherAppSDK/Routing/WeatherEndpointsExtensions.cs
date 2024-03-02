@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Newtonsoft.Json;
 using WeatherApp.Clients;
 using WeatherApp.Models;
 
@@ -20,6 +19,8 @@ public static class WeatherEndpointsExtensions
             {
                 Description = result.Weather.Select(x => x.Description).ToList()
             };
-            }).Produces<WeatherResponse>();
+            })
+            .RequireRateLimiting("fixed")
+            .Produces<WeatherResponse>();
     }
 }

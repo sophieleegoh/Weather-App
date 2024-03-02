@@ -1,0 +1,8 @@
+.idea/
+packages/
+.DS_Store
+bin/
+obj/
+*.DotSettings*
+
+**/TestResults/

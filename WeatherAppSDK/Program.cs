@@ -1,7 +1,11 @@
+using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using WeatherApp.Authentication;
+using WeatherApp.Constants;
 using WeatherApp.Registrations;
 using WeatherApp.Routing;
 
@@ -14,20 +18,61 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddRateLimiter(rateLimiterOptions =>
 {
-    rateLimiterOptions.AddFixedWindowLimiter("fixed", options =>
+    rateLimiterOptions.AddPolicy("fixed-by-api-key", httpContext =>
     {
-        options.PermitLimit = 5;
-        options.Window = TimeSpan.FromSeconds(15);
+        httpContext.Request.Headers.TryGetValue(ApiKeyConstants.ApiKeyHeaderName,
+            out var extractedApiKey);
+        return RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: extractedApiKey,
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 5,
+                Window = TimeSpan.FromMinutes(1)
+            }
+        );
     });
     rateLimiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 });
 
+builder.Services.AddSwaggerGen(x =>
+{
+    x.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+    {
+        Description = "The api key to access the api",
+        Type = SecuritySchemeType.ApiKey,
+        Name = "API-KEY",
+        In = ParameterLocation.Header,
+        Scheme = "ApiKeyScheme"
+    });
+    var scheme = new OpenApiSecurityScheme
+    {
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "ApiKey"
+        },
+        In = ParameterLocation.Header
+    };
+    var requirement = new OpenApiSecurityRequirement
+    {
+        { scheme, new List<string>() }
+    };
+    x.AddSecurityRequirement(requirement);
+});
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapSwagger();
+
+app.UseMiddleware<ApiKeyAuthMiddleware>();
+app.UseAuthorization();
+
 app.MapWeatherEndpoints();
-
-app.UseHttpsRedirection();
 app.UseRateLimiter();
-
 app.Run();
 
 public partial class Program { }

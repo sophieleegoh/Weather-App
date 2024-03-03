@@ -11,16 +11,19 @@ public static class WeatherEndpointsExtensions
 {
     public static void MapWeatherEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("weather", async ([FromServices] IOpenWeatherMapClient openWeatherMapClient, [FromQuery] string country, [FromQuery] string city) =>
-        {
-            var result = await openWeatherMapClient.GetWeatherDescription(country, city);
-                
-            return new WeatherResponse
+        endpoints.MapGet("weather", async (
+                [FromServices] IOpenWeatherMapClient openWeatherMapClient, 
+                [FromQuery] string country, 
+                [FromQuery] string city) =>
             {
-                Description = result.Weather.Select(x => x.Description).ToList()
-            };
+                var result = await openWeatherMapClient.GetWeatherDescription(country, city);
+                    
+                return new WeatherResponse
+                {
+                    Description = result.Weather.Select(x => x.Description).ToList()
+                };
             })
-            .RequireRateLimiting("fixed")
+            .RequireRateLimiting("fixed-by-api-key")
             .Produces<WeatherResponse>();
     }
 }

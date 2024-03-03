@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http.Headers;
 using FluentAssertions;
 
 namespace WeatherAppSDK.IntegrationTests.GetWeatherDescription
@@ -12,6 +13,8 @@ namespace WeatherAppSDK.IntegrationTests.GetWeatherDescription
         public GetWeatherDescriptionIntegrationTests(TestContext context)
         {
             _client = context.GetClient();
+            _client.DefaultRequestHeaders.Add("API-KEY", "123");
+
         }
 
         [Fact]

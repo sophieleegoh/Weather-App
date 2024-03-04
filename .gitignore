@@ -6,3 +6,5 @@ obj/
 *.DotSettings*
 
 **/TestResults/
+
+**/node_modules/**

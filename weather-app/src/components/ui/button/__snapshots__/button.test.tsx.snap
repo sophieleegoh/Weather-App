@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button snapshot tests Renders the component 1`] = `
+<button
+  onClick={[Function]}
+>
+  button label
+</button>
+`;

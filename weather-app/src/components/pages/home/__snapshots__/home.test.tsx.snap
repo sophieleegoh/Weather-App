@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page snapshot tests Renders the component 1`] = `
+<div>
+  <div>
+    <input
+      onChange={[Function]}
+      placeholder="city"
+      type="text"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="country"
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+</div>
+`;

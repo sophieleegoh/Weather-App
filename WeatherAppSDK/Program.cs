@@ -1,7 +1,6 @@
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using WeatherApp.Authentication;
@@ -10,6 +9,15 @@ using WeatherApp.Registrations;
 using WeatherApp.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+        });
+});
 
 builder.Services.AddHttpClient();
 builder.Services.AddClients();
@@ -63,6 +71,8 @@ builder.Services.AddSwaggerGen(x =>
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseCors();
 
 app.UseSwagger();
 app.UseSwaggerUI();

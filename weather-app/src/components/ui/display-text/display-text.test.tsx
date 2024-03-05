@@ -1,10 +1,10 @@
 import renderer from 'react-test-renderer';
-import InputField from './index';
+import DisplayText from './index';
 
-describe("Input field snapshot tests", () => {
+describe("Display text snapshot tests", () => {
   it("Renders the component", () => {
     const component = renderer.create(
-      <InputField placeholder="placeholder text" inputText="" onUpdate={() => {}} />
+      <DisplayText text="This is some test display text" />
     );
 
     const tree = component.toJSON();

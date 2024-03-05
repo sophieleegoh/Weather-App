@@ -1,28 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page snapshot tests Renders the component 1`] = `
-<div>
+<div
+  className="p-20"
+>
+  <h1
+    className="text-xl py-4"
+  >
+    Weather Description App
+  </h1>
+  <p
+    className="pb-10"
+  >
+    Enter a city and a country code, and submit to view the description of the weather in that location.
+  </p>
   <form
     onSubmit={[Function]}
   >
-    <input
-      onChange={[Function]}
-      placeholder="city"
-      type="text"
-      value=""
-    />
-    <input
-      onChange={[Function]}
-      placeholder="country"
-      type="text"
-      value=""
-    />
-    <button
-      onClick={[Function]}
+    <div
+      className="grid grid-cols-2 gap-4"
     >
-      Submit
-    </button>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        onChange={[Function]}
+        placeholder="City"
+        type="text"
+        value=""
+      />
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        onChange={[Function]}
+        placeholder="Country code"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="py-4"
+    >
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+    </div>
   </form>
-  <div />
+  <p
+    className="pb-10"
+  />
+  <p
+    className="pb-10"
+  />
 </div>
 `;

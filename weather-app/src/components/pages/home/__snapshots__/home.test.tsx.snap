@@ -2,7 +2,9 @@
 
 exports[`Home page snapshot tests Renders the component 1`] = `
 <div>
-  <div>
+  <form
+    onSubmit={[Function]}
+  >
     <input
       onChange={[Function]}
       placeholder="city"
@@ -20,6 +22,7 @@ exports[`Home page snapshot tests Renders the component 1`] = `
     >
       Submit
     </button>
-  </div>
+  </form>
+  <div />
 </div>
 `;

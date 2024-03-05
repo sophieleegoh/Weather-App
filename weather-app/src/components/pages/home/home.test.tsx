@@ -10,5 +10,6 @@ describe("Home page snapshot tests", () => {
     const tree = component.toJSON();
 
     expect(tree).toMatchSnapshot();
-  })
+  });
 })
+

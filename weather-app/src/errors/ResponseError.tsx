@@ -1,4 +1,5 @@
-import { CityNotFound } from "./CityNotFoundError";
+import { InvalidApiKeyError } from "./InvalidApiKey";
+import { InvalidInputError } from "./InvalidInputError";
 import { TooManyRequestsError } from "./TooManyRequestsError";
 
-export type ResponseError = TooManyRequestsError | CityNotFound;
+export type ResponseError = TooManyRequestsError | InvalidInputError | InvalidApiKeyError ;

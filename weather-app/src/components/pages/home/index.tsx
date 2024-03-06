@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { ResponseError } from "../../../errors/ResponseError";
 import InputField from "../../ui/input-field";
 import Button from "../../ui/button";
-import { CityNotFound } from "../../../errors/CityNotFoundError";
+import { InvalidInputError } from "../../../errors/InvalidInputError";
 import { TooManyRequestsError } from "../../../errors/TooManyRequestsError";
 import { FormProvider, useForm } from "react-hook-form";
 import WeatherResponse from "../../../models/WeatherResponse";
 import DisplayText from "../../ui/display-text";
+import axios from "axios";
+import { InvalidApiKeyError } from "../../../errors/InvalidApiKey";
 
 function Home() {
   const [cityInput, setCityInput] = useState("");
@@ -15,17 +17,22 @@ function Home() {
   const [response, setResponse] = useState("");
   const [error, setError] = useState<ResponseError>();
   const [validationMessage, setValidationMessage] = useState("");
-  const [result, setResult] = useState("")
+  const [result, setResult] = useState("");
 
   const methods = useForm();
 
   useEffect(() => {
-    setResult(response ? response : error ? error.message : "")
-  }, [response, error])
+    setResult(response ? response : error ? error.message : "");
+  }, [response, error]);
 
-  function getWeather(city: string, country: string) {
-    setResponse("")
-    setError(undefined)
+  function clearState() {
+    setResponse("");
+    setError(undefined);
+  }
+
+  async function getWeather(city: string, country: string) {
+    clearState();
+
     if (city.length === 0) {
       setValidationMessage("The city field is required. Please enter a city");
     } else {
@@ -37,39 +44,38 @@ function Home() {
         setValidationMessage("");
       }
 
-      fetch(`http://localhost:5000/weather?country=${country}&city=${city}`, {
-        method: "GET",
-        credentials: "same-origin",
-        headers: {
-          "API-KEY": "321",
-          "User-Agent": "Mozilla 5.0",
-        },
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-
-          if (response.status.toString() === "404") {
-            setError(new CityNotFound());
-          } else if (response.status.toString() === "429") {
+      const url = `http://localhost:5000/weather?country=${country}&city=${city}`;
+      await axios
+        .get<WeatherResponse>(url, {
+          headers: {
+            "API-KEY": "12345",
+          },
+        })
+        .then((res) => {
+          setResponse(
+            `The weather description is "${res.data.description.join(", ")}"`
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 401) {
+            setError(new InvalidApiKeyError());
+          } else if (err.response.status === 404) {
+            setError(new InvalidInputError());
+          } else if (err.response.status === 429) {
             setError(new TooManyRequestsError());
           }
-        })
-        .then((json) => {
-          const response: WeatherResponse = json;
-          setResponse(`The weather description is "${response.description}"`)
-        })
-        .catch((error) => console.log(error));
+        });
     }
   }
 
   return (
-    <div className="p-20">
+    <div className="p-10 md:p-40">
       <h1 className="text-xl py-4">Weather Description App</h1>
-      <DisplayText text="Enter a city and a country code, and submit to view the description of
-        the weather in that location." />
-
+      <DisplayText
+        text="Enter a city and a country code, and submit to view the description of
+          the weather in that location."
+      />
       <FormProvider {...methods}>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -91,7 +97,7 @@ function Home() {
         </form>
       </FormProvider>
       {validationMessage && <DisplayText text={validationMessage} />}
-      {result && <DisplayText text={result} /> }
+      {result && <DisplayText text={result} />}
     </div>
   );
 }

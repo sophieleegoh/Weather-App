@@ -2,19 +2,24 @@
 
 # Contents
 [Introduction](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#introduction)
+
 [Webpage Features](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#webpage-features)
+
 [API Features](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#api-features)
 - [API Key Implementation Details](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#api-key-implementation-details)
 - [API Key Rate Limiting Implementation Details](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#api-key-rate-limiting-implementation-details)
+
 [Building/Running the Solution](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#building-and-running-the-solution)
 - [API](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#building-and-running-the-api)
 - [UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#installing-dependencies-and-running-the-ui)
+
 [Testing the Solution](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#testing-the-solution)
 - [Unit Tests](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#running-api-unit-tests)
 - [Integration Tests](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#running-api-integration-tests)
 - [UI Tests](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#running-ui-tests)
 - [Manually Testing via the UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#manually-testing-via-the-ui)
 - [Manually Testing the API](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#manually-testing-the-api)
+
 [Example Screenshots of the UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#api-features)
 
 # Introduction

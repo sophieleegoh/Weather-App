@@ -20,7 +20,7 @@
 - [Manually Testing via the UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#manually-testing-via-the-ui)
 - [Manually Testing the API](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#manually-testing-the-api)
 
-[Example Screenshots of the UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#api-features)
+[Example Screenshots of the UI](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#example-screenshots-of-the-ui)
 
 # Introduction
 In this repository, you will find a webpage UI built with `React` and an API created using `.NET`.
@@ -119,8 +119,8 @@ The UI should now be reachable at `http://localhost:3000/`.
 
 ## Manually Testing via the UI
 
-1. Run the API solution
-2. Start the UI
+1. Run the API solution (see [here](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#example-screenshots-of-the-ui))
+2. Start the UI (see [here](https://github.com/sophieleegoh/Weather-App?tab=readme-ov-file#example-screenshots-of-the-ui))
 3. Go to `http://localhost:3000/`
 4. Enter an API key, a city name and a country code
 5. Click on the `Submit` button

@@ -1,5 +1,6 @@
 using System.Net;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
@@ -30,7 +31,7 @@ public class OpenWeatherMapClientTests
     {
         // Arrange 
         var city = "Melbourne";
-        var country = "Australia";
+        var country = "AU";
         var expectedResult = new OpenWeatherMapResponse
             { Weather = new List<Weather> { new() { Description = "moderate rain" } } };
 
@@ -56,7 +57,7 @@ public class OpenWeatherMapClientTests
     }
     
     [Fact]
-    public async Task GivenInvalidCountryAndInvalidCity_WhenGetWeatherDescription_ThenReturnWeatherDescription()
+    public async Task GivenInvalidCountryAndInvalidCity_WhenGetWeatherDescription_ThenThrowExternalRequestException()
     {
         // Arrange 
         var city = "madeup";

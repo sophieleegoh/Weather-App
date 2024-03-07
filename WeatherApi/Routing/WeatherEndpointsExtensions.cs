@@ -19,6 +19,11 @@ public static class WeatherEndpointsExtensions
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(city))
+                    {
+                        throw new BadHttpRequestException("City is a required query parameter");
+                    }
+                    
                     var result = await openWeatherMapClient.GetWeatherDescription(country, city);
 
                     return Results.Ok(new WeatherResponse

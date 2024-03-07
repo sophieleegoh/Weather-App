@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAppSDK", "WeatherAppSDK\WeatherAppSDK.csproj", "{1D77E1D6-0C90-4698-B7A3-4A35484AF3E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi", "WeatherApi\WeatherApi.csproj", "{1D77E1D6-0C90-4698-B7A3-4A35484AF3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAppSDK.UnitTests", "WeatherAppSDK.UnitTests\WeatherAppSDK.UnitTests.csproj", "{5245F921-5E26-4543-AB9C-B9374B950CA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi.UnitTests", "WeatherApi.UnitTests\WeatherApi.UnitTests.csproj", "{5245F921-5E26-4543-AB9C-B9374B950CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAppSDK.IntegrationTests", "WeatherAppSDK.IntegrationTests\WeatherAppSDK.IntegrationTests.csproj", "{A79182C0-AC9F-4D76-BD06-66177082AE03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi.IntegrationTests", "WeatherApi.IntegrationTests\WeatherApi.IntegrationTests.csproj", "{A79182C0-AC9F-4D76-BD06-66177082AE03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

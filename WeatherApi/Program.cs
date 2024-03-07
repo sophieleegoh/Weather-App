@@ -13,10 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:3000").AllowAnyHeader();
-        });
+        policy => { policy.WithOrigins("http://localhost:3000").AllowAnyHeader(); });
 });
 
 builder.Services.AddHttpClient();
@@ -35,7 +32,7 @@ builder.Services.AddRateLimiter(rateLimiterOptions =>
             factory: _ => new FixedWindowRateLimiterOptions
             {
                 PermitLimit = 5,
-                Window = TimeSpan.FromMinutes(1)
+                Window = TimeSpan.FromHours(1)
             }
         );
     });
@@ -44,7 +41,7 @@ builder.Services.AddRateLimiter(rateLimiterOptions =>
 
 builder.Services.AddSwaggerGen(x =>
 {
-    x.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+    x.AddSecurityDefinition("ApiKeys", new OpenApiSecurityScheme
     {
         Description = "The api key to access the api",
         Type = SecuritySchemeType.ApiKey,
@@ -85,4 +82,6 @@ app.MapWeatherEndpoints();
 app.UseRateLimiter();
 app.Run();
 
-public partial class Program { }
+public partial class Program
+{
+}

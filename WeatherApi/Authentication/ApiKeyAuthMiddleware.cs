@@ -25,7 +25,6 @@ public class ApiKeyAuthMiddleware
         }
         
         var apiKeys = _configuration.GetSection(ApiKeyConstants.ApiKeyName).Get<List<string>>();
-        // var apiKeys = new List<string> { "123", "321" };
         if (!apiKeys.Contains(extractedApiKey))
         {
             context.Response.StatusCode = 401;

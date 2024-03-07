@@ -2,7 +2,7 @@
 
 exports[`Display text snapshot tests Renders the component 1`] = `
 <p
-  className="pb-10"
+  className="py-10"
 >
   This is some test display text
 </p>

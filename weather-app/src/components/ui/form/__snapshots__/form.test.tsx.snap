@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form snapshot tests Renders the component 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+  >
+    <div>
+      This is a form
+    </div>
+  </div>
+</form>
+`;

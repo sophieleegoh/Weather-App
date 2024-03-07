@@ -1,4 +1,3 @@
 export default interface WeatherResponse {
-  description: string[]
+  description: string[];
 }
-  

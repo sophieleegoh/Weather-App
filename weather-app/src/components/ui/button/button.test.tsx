@@ -1,5 +1,5 @@
-import renderer from 'react-test-renderer';
-import Button from './index';
+import renderer from "react-test-renderer";
+import Button from "./index";
 
 describe("Button snapshot tests", () => {
   it("Renders the component", () => {
@@ -10,5 +10,5 @@ describe("Button snapshot tests", () => {
     const tree = component.toJSON();
 
     expect(tree).toMatchSnapshot();
-  })
-})
+  });
+});

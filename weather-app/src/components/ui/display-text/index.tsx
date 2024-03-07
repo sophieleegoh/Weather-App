@@ -3,7 +3,7 @@ export type DisplayTextProps = {
 };
 
 function DisplayText({ text }: DisplayTextProps) {
-  return <p className="pb-10">{text}</p>;
+  return <p className="py-10">{text}</p>;
 }
 
 export default DisplayText;

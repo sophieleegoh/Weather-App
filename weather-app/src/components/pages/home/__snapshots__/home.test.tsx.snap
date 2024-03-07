@@ -10,7 +10,19 @@ exports[`Home page snapshot tests Renders the component 1`] = `
     Weather Description App
   </h1>
   <p
-    className="pb-10"
+    className="py-10"
+  >
+    Please enter a valid API key
+  </p>
+  <input
+    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    onChange={[Function]}
+    placeholder="API Key"
+    type="text"
+    value=""
+  />
+  <p
+    className="py-10"
   >
     Enter a city and a country code, and submit to view the description of the weather in that location.
   </p>
@@ -34,16 +46,16 @@ exports[`Home page snapshot tests Renders the component 1`] = `
         type="text"
         value=""
       />
-    </div>
-    <div
-      className="py-4"
-    >
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={[Function]}
+      <div
+        className="py-4"
       >
-        Submit
-      </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={[Function]}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </form>
 </div>

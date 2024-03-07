@@ -1,10 +1,12 @@
 import renderer from "react-test-renderer";
-import DisplayText from "./index";
+import Form from "./index";
 
-describe("Display text snapshot tests", () => {
+describe("Form snapshot tests", () => {
   it("Renders the component", () => {
     const component = renderer.create(
-      <DisplayText text="This is some test display text" />
+      <Form>
+        <div>This is a form</div>
+      </Form>
     );
 
     const tree = component.toJSON();
